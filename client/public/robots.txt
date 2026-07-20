@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin
+Disallow: /client-portal
+Disallow: /api/
+
+Sitemap: https://mtechsolutions.com/sitemap.xml
