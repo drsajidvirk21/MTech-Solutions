@@ -1,1 +1,9 @@
-import React from 'eact';\nimport { Helmet } from 'eact-helmet-async';\n\nconst MetaTags = ({ title, description, ogImage = '/og-image.jpg' }) => {\n  return (\n    <Helmet>\n      <title>{title} - MTech Solutions</title>\n      <meta name=\"description\" content=\"{description}\" />\n      <meta property=\"og:title\" content=\"{title}\" />\n      <meta property=\"og:description\" content=\"{description}\" />\n      <meta property=\"og:image\" content=\"{ogImage}\" />\n      <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    </Helmet>\n  );\n};\n\nexport default MetaTags;
+import React from 'react';
+
+const MetaTags = ({ title, description }) => {
+  document.title = title || 'MTech Solutions';
+
+  return null;
+};
+
+export default MetaTags;

@@ -1,1 +1,20 @@
-module.exports = {\n  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],\n  theme: {\n    extend: {\n      colors: {\n        'primary-colour': '#0F172A',\n        'secondary-colour': '#06B6D4',\n        'accent-colour': '#10B981'\n      },\n      fontFamily: {\n        heading: ['Poppins', 'sans-serif'],\n        body: ['Inter', 'sans-serif']\n      }\n    }\n  },\n  plugins: []\n}
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "primary-colour": "#0F172A",
+        "secondary-colour": "#06B6D4",
+        "accent-colour": "#10B981",
+      },
+      fontFamily: {
+        heading: ["Poppins", "sans-serif"],
+        body: ["Inter", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+};

@@ -1,1 +1,47 @@
-"import React from 'react';\nimport { Link } from 'react-router-dom';\n\nconst About = () => {\n  return (\n    <div className=\"about\">\n      <div className=\"container mx-auto px-4">\n        <h1 className=\"text-4xl font-bold mb-8 ml-10\">About MTech Solutions</h1>\n        \n        <div className=\"flex flex-col md:flex-row items-center space-y-8 md:space-y-0\">\n          {/* Company Overview */}\n          <div className=\"bg-white p-8 rounded-xl shadow-lg space-y-6\">\n            <h2 className=\"text-2xl font-semibold text-primary-colour mb-6\">Company Overview</h2>\n            <p className=\"leading-relaxed text-lg text-primary-colour\">\n              MTech Solutions is a forward-thinking technology consulting company\n              dedicated to building innovative software solutions that drive \n              business transformation. With our expertise in full-stack development,\n              AI integration, and cloud-native applications, we empower \n              organizations to embrace the future of technology.\n            </p>\n          </div>\n\n          {/* Statistics */}\n          <div className=\"grid grid-cols-1 lg:grid-cols-3 gap-8\">\n            <div className=\"bg-white p-8 rounded-lg shadow-lg text-center\">\n              <div className=\"p-4 rounded-full bg-primary-colour bg-opacity-10\">\n                <span className=\"text-4xl font-bold\">\n                  {Math.floor(Math.random() * 1000)}<span className=\"text-3xl\">{Math.floor(Math.random() * 100)}K+</span>\n                </span>\n                <p className=\"text-secondary-colour text-sm">Projects Completed</p>\n              </div>\n            </div>\n            <div className=\"bg-white p-8 rounded-lg shadow-lg text-center\">\n              <div className=\"p-4 rounded-full bg-primary-colour bg-opacity-10\">\n                <span className=\"text-4xl font-bold\">\n                  {Math.floor(Math.random() * 500)}<span className=\"text-3xl\">{Math.floor(Math.random() * 50)}K+</span>\n                </span>\n                <p className=\"text-secondary-colour text-sm\">Solutions Implemented</p>\n              </div>\n            </div>\n            <div className=\"bg-white p-8 rounded-lg shadow-lg text-center\">\n              <div className=\"p-4 rounded-full bg-primary-colour bg-opacity-10\">\n                <span className=\"text-4xl font-bold\">\n                  100<br/><span className=\"text-2xl\">%</span>\n                </span>\n                <p className=\"text-secondary-colour text-sm\">Client Retention</p>\n              </div>\n            </div>\n          </div>\n        </div>\n        \n        <div className=\"space-y-6 mt-12 \">\n          <h2 className=\"text-2xl font-semibold mb-4\">Our Vision &amp; Mission</h2>\n          \n          <div className=\"flex flex-col md:flex-row space-y-4\">\n            <div className=\"bg-primary-colour text-white p-6 rounded-lg shadow-md\">\n              <h3 className=\"text-xl font-bold mb-2\">Vision</h3>\n              <p className=\"flex-grow leading-relaxed\">\n                To become a leading software and AI solutions provider that\tenables businesses to thrive in the digital era.\n              </p>\n            </div>\n            \n            <div className=\"bg-white p-6 rounded-lg shadow-lg\">\n              <h3 className=\"text-xl font-bold mb-2\">Mission</h3>\n              <p className=\"flex-grow leading-relaxed\">\n                Empowering businesses through innovative, scalable, and sustainable\n                technology solutions that deliver measurable impact.\n              </p>\n            </div>\n          </div>\n        </div>\n        \n        <div className=\"my-12\">\n          <h2 className=\"text-2xl font-semibold mb-6\">Why Choose MTech Solutions</h2>\n          <div className=\"space-y-3\">\n            <div className=\"flex flex-col md:flex-row space-y-2 md:space-y-0\">\n              <div className=\"flex items-center space-x-2 bg-white p-4 rounded-lg shadow-sm\">\n                <div className=\"rounded-full bg-emerald-colour p-2\"></div>\n                <div>\n                  <h4 className=\"font-medium text-primary-colour\">AI-Powered Solutions</h4>\n                  <p className=\"text-secondary-colour text-sm\"></p>\n                </div>\n              </div>\n              <div className=\"flex items-center space-x-2 bg-white p-4 rounded-lg shadow-sm\">\n                <div className=\"rounded-full bg-emerald-colour p-2\"></div>\n                <div>\n                  <h4 className=\"font-medium text-primary-colour\">Future-Ready Tech</h4>\n                  <p className=\"text-secondary-colour text-sm\"></p>\n                </div>\n              </div>\n              {/* Add more \"Why Choose\" cards */}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default About;\n"
+import React from 'react';
+
+const About = () => {
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-8">
+        About MTech Solutions
+      </h1>
+
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">
+          Company Overview
+        </h2>
+
+        <p>
+          MTech Solutions is a technology company focused on website
+          development, software engineering, AI integration, cloud
+          solutions, and business automation.
+        </p>
+      </div>
+
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">
+          Vision
+        </h2>
+
+        <p>
+          To become a leading provider of innovative software and AI
+          solutions that help businesses succeed in the digital era.
+        </p>
+      </div>
+
+      <div className="bg-white rounded-lg shadow p-6">
+        <h2 className="text-2xl font-semibold mb-4">
+          Mission
+        </h2>
+
+        <p>
+          Empowering organizations through modern, scalable and
+          sustainable technology solutions.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default About;

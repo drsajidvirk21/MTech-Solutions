@@ -1,4 +1,4 @@
-import React, { useState } from 'eact';
+import React, { useState } from 'react';
 
 const AICenter = () => {
   const aiCapabilities = [

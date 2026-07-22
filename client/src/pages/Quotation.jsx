@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'eact';
-import { api } from '../utils/api';
+import React, { useState, useEffect } from 'react';
+import api from '../utils/api';
 import MetaTags from '../components/SEO/MetaTags';
 
 const Quotation = () => {

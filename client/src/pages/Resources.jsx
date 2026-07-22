@@ -1,4 +1,4 @@
-import React, { useState } from 'eact';
+import React, { useState } from 'react';
 
 const Resources = () => {
   const [activeTab, setActiveTab] = useState('blog');
