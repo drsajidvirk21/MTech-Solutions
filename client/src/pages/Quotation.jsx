@@ -1,111 +1,253 @@
-import React, { useState, useEffect } from 'react';
-import api from '../utils/api';
-import MetaTags from '../components/SEO/MetaTags';
+import React, { useState } from "react";
+import MetaTags from "../components/SEO/MetaTags";
 
 const Quotation = () => {
-  const [services, setServices] = useState([]);
-  const [selectedService, setSelectedService] = useState('');
-  const [requirements, setRequirements] = useState('');
-  const [estimatedCost, setEstimatedCost] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    service: "",
+    name: "",
+    email: "",
+    company: "",
+    budget: "",
+    requirements: "",
+  });
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const res = await api.get('/services');
-        setServices(res.data);
-      } catch (err) {
-        console.error('Failed to fetch services:', err);
-      }
-    };
-    fetchServices();
-  }, []);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      // Call backend quotation estimation endpoint
-      const res = await api.post('/quotations/estimate', {
-        service_id: selectedService,
-        requirements
-      });
-      setEstimatedCost(res.data.estimated_cost);
-    } catch (err) {
-      console.error('Estimation failed:', err);
-      // Fallback simple estimate
-      setEstimatedCost('Custom quote - our team will contact you');
-    } finally {
-      setLoading(false);
-    }
+
+    console.log("Quotation Request:", formData);
+
+    setSubmitted(true);
+
+    setFormData({
+      service: "",
+      name: "",
+      email: "",
+      company: "",
+      budget: "",
+      requirements: "",
+    });
   };
 
   return (
     <>
       <MetaTags
-        title="Online Quotation - MTech Solutions"
-        description="Get an instant estimated cost for your software project. Select a service and describe your requirements."
+        title="Request a Quotation | MTech Solutions"
+        description="Get a professional quotation for your website, ERP, SaaS, AI, or custom software project."
       />
-      <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-center text-primary-colour mb-8">Request a Quotation</h1>
-          <p className="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
-            Get an estimated cost for your project in seconds. Our team will follow up with a detailed proposal.
-          </p>
 
-          <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Select Service</label>
-                <select
-                  value={selectedService}
-                  onChange={(e) => setSelectedService(e.target.value)}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-                  required
-                >
-                  <option value="">Choose a service</option>
-                  {services.map((service) => (
-                    <option key={service.id} value={service.id}>
-                      {service.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+      <div className="bg-slate-50 min-h-screen">
 
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Project Requirements</label>
-                <textarea
-                  value={requirements}
-                  onChange={(e) => setRequirements(e.target.value)}
-                  rows="5"
-                  placeholder="Describe your project, features needed, timeline, and budget range..."
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-                  required
-                />
-              </div>
+        {/* Hero Section */}
+        <section className="bg-slate-900 text-white py-20">
+          <div className="max-w-6xl mx-auto px-6 text-center">
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-primary-colour text-white py-3 rounded-lg hover:bg-emerald-colour transition-colors font-medium"
-              >
-                {loading? 'Calculating...' : 'Get Estimate'}
-              </button>
-            </form>
+            <h1 className="text-5xl font-bold mb-6">
+              Request a Project Quotation
+            </h1>
 
-            {estimatedCost && (
-              <div className="mt-8 p-6 bg-secondary-colour bg-opacity-10 rounded-lg text-center">
-                <h3 className="text-lg font-semibold text-primary-colour mb-2">Estimated Cost</h3>
-                <p className="text-3xl font-bold text-secondary-colour">{estimatedCost}</p>
-                <p className="text-sm text-slate-500 mt-2">Final pricing may vary based on detailed requirements.</p>
-              </div>
-            )}
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Tell us about your project requirements and receive a
+              professional quotation tailored to your business needs.
+            </p>
+
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Form Section */}
+        <section className="py-20">
+          <div className="max-w-5xl mx-auto px-6">
+
+            <div className="bg-white rounded-2xl shadow-xl p-10">
+
+              {submitted && (
+                <div className="bg-green-100 border border-green-300 text-green-700 p-4 rounded-lg mb-8">
+                  Thank you! Your quotation request has been submitted successfully.
+                </div>
+              )}
+
+              <form
+                onSubmit={handleSubmit}
+                className="grid md:grid-cols-2 gap-6"
+              >
+
+                <div>
+                  <label className="block font-medium mb-2">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">
+                    Company Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">
+                    Service Required
+                  </label>
+
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  >
+                    <option value="">Select Service</option>
+                    <option>Website Development</option>
+                    <option>E-Commerce Development</option>
+                    <option>ERP System</option>
+                    <option>School Management System</option>
+                    <option>SaaS Platform</option>
+                    <option>AI Solution</option>
+                    <option>Mobile Application</option>
+                    <option>Custom Software</option>
+                  </select>
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block font-medium mb-2">
+                    Estimated Budget
+                  </label>
+
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  >
+                    <option value="">Select Budget Range</option>
+                    <option>Below $1,000</option>
+                    <option>$1,000 - $5,000</option>
+                    <option>$5,000 - $10,000</option>
+                    <option>$10,000+</option>
+                  </select>
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block font-medium mb-2">
+                    Project Requirements
+                  </label>
+
+                  <textarea
+                    rows="6"
+                    name="requirements"
+                    value={formData.requirements}
+                    onChange={handleChange}
+                    required
+                    placeholder="Describe your project requirements, features, objectives, and timeline..."
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <button
+                    type="submit"
+                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-4 rounded-lg font-semibold transition"
+                  >
+                    Request Quotation
+                  </button>
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="bg-white py-20">
+
+          <div className="max-w-6xl mx-auto px-6">
+
+            <h2 className="text-4xl font-bold text-center mb-12">
+              Why Request a Quotation From Us?
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+
+              <div className="bg-slate-50 p-8 rounded-xl shadow">
+                <h3 className="text-xl font-bold mb-3">
+                  Transparent Pricing
+                </h3>
+
+                <p className="text-slate-600">
+                  Clear project estimates with no hidden costs.
+                </p>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-xl shadow">
+                <h3 className="text-xl font-bold mb-3">
+                  Expert Consultation
+                </h3>
+
+                <p className="text-slate-600">
+                  Receive guidance from experienced software professionals.
+                </p>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-xl shadow">
+                <h3 className="text-xl font-bold mb-3">
+                  Customized Solutions
+                </h3>
+
+                <p className="text-slate-600">
+                  Every quotation is tailored to your unique business goals.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
     </>
   );
 };
 
 export default Quotation;
-

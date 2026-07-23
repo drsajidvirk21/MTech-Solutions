@@ -1,120 +1,201 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import api from '../utils/api';
+import React, { useState } from "react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    password: '',
-    phone: '',
-    company_name: ''
+    fullName: "",
+    email: "",
+    company: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const { data } = await api.post('/auth/register', formData);
-      localStorage.setItem('token', data.token);
-      navigate('/client-portal');
-    } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed');
-    }
+    console.log("Register Data:", formData);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-colour to-accent-colour py-12">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg">
-        <h1 className="text-3xl font-bold text-center text-primary-colour mb-2">Create Account</h1>
-        <p className="text-center text-slate-600 mb-6">Join MTech Solutions and get access to your projects</p>
-        
-        {error && (
-          <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4 text-sm">
-            {error}
-          </div>
-        )}
+    <div className="min-h-screen bg-slate-50">
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-              <input 
-                type="text"
-                name="full_name"
-                value={formData.full_name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-                required
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Phone</label>
-              <input 
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-              />
-            </div>
-          </div>
+      {/* Hero Section */}
+      <section className="bg-slate-900 text-white py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-            <input 
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-              required
-            />
-          </div>
+          <h1 className="text-5xl font-bold mb-6">
+            Create Your Account
+          </h1>
 
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Company Name</label>
-            <input 
-              type="text"
-              name="company_name"
-              value={formData.company_name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-            <input 
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
-              required
-            />
-          </div>
-
-          <button 
-            type="submit"
-            className="w-full bg-accent-colour text-white py-3 rounded-lg hover:bg-emerald-600 transition-colors font-semibold"
-          >
-            Create Account
-          </button>
-        </form>
-
-        <div className="mt-6 text-center">
-          <p className="text-sm text-slate-600">
-            Already have an account? <Link to="/login" className="text-secondary-colour hover:underline">Sign in</Link>
+          <p className="text-xl text-slate-300">
+            Join MTech Solutions and access our software services,
+            consultations, quotations, and project management tools.
           </p>
+
         </div>
-      </div>
+      </section>
+
+      {/* Registration Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* Left Content */}
+            <div>
+
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">
+                Start Your Digital Journey
+              </h2>
+
+              <p className="text-lg text-slate-600 mb-8">
+                Register to access consultations, quotations,
+                project tracking, support resources, and future
+                client portal services.
+              </p>
+
+              <div className="space-y-4">
+
+                <div className="bg-white p-5 rounded-xl shadow">
+                  <h3 className="font-semibold text-lg mb-2">
+                    Client Dashboard Access
+                  </h3>
+                  <p className="text-slate-600">
+                    Manage projects and monitor progress.
+                  </p>
+                </div>
+
+                <div className="bg-white p-5 rounded-xl shadow">
+                  <h3 className="font-semibold text-lg mb-2">
+                    Fast Quotations
+                  </h3>
+                  <p className="text-slate-600">
+                    Request software and website quotations quickly.
+                  </p>
+                </div>
+
+                <div className="bg-white p-5 rounded-xl shadow">
+                  <h3 className="font-semibold text-lg mb-2">
+                    Dedicated Support
+                  </h3>
+                  <p className="text-slate-600">
+                    Direct communication with our technical team.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Register Form */}
+            <div className="bg-white p-8 rounded-2xl shadow-xl">
+
+              <h2 className="text-3xl font-bold text-center mb-8">
+                Register
+              </h2>
+
+              <form onSubmit={handleSubmit}>
+
+                <div className="mb-4">
+                  <label className="block mb-2 font-medium">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2 font-medium">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2 font-medium">
+                    Company Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Enter company name"
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2 font-medium">
+                    Password
+                  </label>
+
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Create password"
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block mb-2 font-medium">
+                    Confirm Password
+                  </label>
+
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Confirm password"
+                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-lg font-semibold transition"
+                >
+                  Create Account
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 };

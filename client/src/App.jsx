@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
+import Footer from './components/Layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -14,6 +15,10 @@ import Booking from './pages/Booking';
 import Quotation from './pages/Quotation';
 import Portfolio from './pages/Portfolio';
 import MetaTags from './components/SEO/MetaTags';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CookiePolicy from "./pages/CookiePolicy";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -24,6 +29,7 @@ const App = () => {
       />
 
       <Router>
+          <ScrollToTop />
         <Navbar />
 
         <div className="app-container">
@@ -40,12 +46,18 @@ const App = () => {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+<Route path="/terms-conditions" element={<TermsConditions />} />
+
+<Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route
               path="*"
               element={<div className="text-center py-20">404 Not Found</div>}
             />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </>
   );

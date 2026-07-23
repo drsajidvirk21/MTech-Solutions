@@ -66,43 +66,122 @@ const Booking = () => {
   };
 
   return (
-    <>
-      <MetaTags
-        title="Book an Appointment - MTech Solutions"
-        description="Schedule a consultation with our experts for web development, AI solutions, custom software, and more."
-      />
-      <section className="min-h-screen bg-gray-50 py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-center text-primary-colour mb-8">Book a Consultation</h1>
-          <p className="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
-            Schedule a meeting with our experts to discuss your project requirements and get a tailored solution.
+  <>
+    <MetaTags
+      title="Book a Consultation - MTech Solutions"
+      description="Schedule a consultation with our experts for web development, AI solutions, ERP systems, SaaS platforms and custom software development."
+    />
+
+    <div className="bg-slate-50 min-h-screen">
+
+      {/* Hero Section */}
+      <section className="bg-slate-900 text-white py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h1 className="text-5xl font-bold mb-6">
+            Book a Consultation
+          </h1>
+
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Schedule a strategic consultation with our experts and
+            discover the best technology solutions for your business.
           </p>
 
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <h3 className="font-bold text-lg mb-2">
+                Project Planning
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Strategic planning for successful project execution.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <h3 className="font-bold text-lg mb-2">
+                Architecture Design
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Modern scalable software architecture recommendations.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <h3 className="font-bold text-lg mb-2">
+                AI Integration
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Discover automation and AI opportunities.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <h3 className="font-bold text-lg mb-2">
+                Business Growth
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Technology strategies that support business expansion.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Booking Form */}
+      <section className="pb-20">
+        <div className="max-w-4xl mx-auto px-6">
+
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+              Schedule Your Appointment
+            </h2>
+
             {success && (
-              <div className="mb-4 p-3 bg-green-100 text-green-800 rounded">
+              <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-lg">
                 {success}
               </div>
             )}
+
             {error && (
-              <div className="mb-4 p-3 bg-red-100 text-red-800 rounded">
+              <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg">
                 {error}
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
+
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Select Service</label>
+                <label className="block font-medium mb-2">
+                  Select Service
+                </label>
+
                 <select
                   name="service_id"
                   value={formData.service_id}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
                   required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
                 >
-                  <option value="">Choose a service</option>
+                  <option value="">
+                    Choose a Service
+                  </option>
+
                   {services.map((service) => (
-                    <option key={service.id} value={service.id}>
+                    <option
+                      key={service.id}
+                      value={service.id}
+                    >
                       {service.name}
                     </option>
                   ))}
@@ -110,72 +189,171 @@ const Booking = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Date & Time</label>
+                <label className="block font-medium mb-2">
+                  Preferred Date & Time
+                </label>
+
                 <input
                   type="datetime-local"
                   name="appointment_date"
                   value={formData.appointment_date}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
                   required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Additional Notes (optional)</label>
+                <label className="block font-medium mb-2">
+                  Additional Notes
+                </label>
+
                 <textarea
                   name="notes"
+                  rows="5"
                   value={formData.notes}
                   onChange={handleChange}
-                  rows="4"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-secondary-colour"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-secondary-colour text-white py-3 rounded-lg hover:bg-cyan-600 transition-colors font-medium flex items-center justify-center gap-2"
+                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-4 rounded-lg font-semibold transition"
               >
-                {loading ? ("Booking...") : ("Book Appointment")}
+                {loading
+                  ? "Booking Appointment..."
+                  : "Book Appointment"}
               </button>
+
             </form>
+
           </div>
 
-          {/* Upcoming Appointments */}
-          {appointments.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold text-primary-colour mb-6">Your Upcoming Appointments</h2>
-              <div className="space-y-4">
-                {appointments.map((apt) => (
-                  <div key={apt.id} className="bg-white p-6 rounded-lg shadow">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-lg font-medium text-primary-colour">
-                          {apt.service?.name || 'Service'}
-                        </h3>
-                        <p className="text-sm text-slate-500">
-                          {new Date(apt.appointment_date).toLocaleString()}
-                        </p>
-                      </div>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${apt.status === 'scheduled' ? 'bg-blue-100 text-blue-800' : apt.status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
-                      >
-                        {apt.status.charAt(0).toUpperCase() + apt.status.slice(1)}
-                      </span>
-                    </div>
-                    {apt.notes && (
-                      <p className="mt-2 text-slate-600 italic">{apt.notes}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
-    </>
-  );
+
+      {/* Services Categories */}
+      <section className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Consultation Categories
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              "Website Development",
+              "ERP Systems",
+              "AI Solutions",
+              "Custom Software",
+              "SaaS Platforms",
+              "Cloud Solutions",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-slate-50 p-6 rounded-xl shadow text-center hover:shadow-xl transition"
+              >
+                <h3 className="font-semibold text-lg">
+                  {item}
+                </h3>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Upcoming Appointments */}
+      {appointments.length > 0 && (
+        <section className="py-20">
+          <div className="max-w-5xl mx-auto px-6">
+
+            <h2 className="text-4xl font-bold mb-10 text-center">
+              Your Scheduled Consultations
+            </h2>
+
+            <div className="space-y-6">
+
+              {appointments.map((apt) => (
+                <div
+                  key={apt.id}
+                  className="bg-white p-6 rounded-xl shadow-lg"
+                >
+                  <div className="flex justify-between items-start">
+
+                    <div>
+                      <h3 className="font-bold text-xl">
+                        {apt.service?.name || "Service"}
+                      </h3>
+
+                      <p className="text-slate-500">
+                        {new Date(
+                          apt.appointment_date
+                        ).toLocaleString()}
+                      </p>
+                    </div>
+
+                    <span className="bg-cyan-100 text-cyan-700 px-4 py-1 rounded-full text-sm">
+                      {apt.status}
+                    </span>
+
+                  </div>
+
+                  {apt.notes && (
+                    <p className="mt-4 text-slate-600">
+                      {apt.notes}
+                    </p>
+                  )}
+
+                </div>
+              ))}
+
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="bg-slate-900 text-white py-20">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+
+          <h2 className="text-4xl font-bold mb-6">
+            Need Immediate Assistance?
+          </h2>
+
+          <p className="text-xl text-slate-300 mb-8">
+            Contact our experts today and discuss your project requirements.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+            <Link
+              to="/contact"
+              className="bg-cyan-500 hover:bg-cyan-600 px-8 py-4 rounded-lg font-semibold"
+            >
+              Contact Us
+            </Link>
+
+            <Link
+              to="/quotation"
+              className="border border-white px-8 py-4 rounded-lg hover:bg-white hover:text-slate-900 transition"
+            >
+              Request Quotation
+            </Link>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </>
+);
 };
 
 export default Booking;

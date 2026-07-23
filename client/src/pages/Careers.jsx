@@ -1,126 +1,378 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Careers = () => {
   const openPositions = [
     {
-      title: 'React Developer',
-      department: 'Engineering',
-      location: 'Remote / Lahore, PK',
-      type: 'Full-time',
-      description: 'We are looking for a skilled React developer with experience in modern frontend frameworks and state management.',
-      requirements: ['3+ years React.js experience', 'Strong TypeScript skills', 'Experience with Redux/Context API', 'Knowledge of testing frameworks']
+      title: "React Developer",
+      department: "Engineering",
+      location: "Remote / Lahore, Pakistan",
+      type: "Full-Time",
+      description:
+        "Build modern web applications using React, Tailwind CSS, and modern frontend technologies.",
+      requirements: [
+        "React.js Experience",
+        "JavaScript ES6+",
+        "Responsive Design",
+        "Git & GitHub Knowledge",
+      ],
     },
     {
-      title: 'Node.js Developer',
-      department: 'Engineering',
-      location: 'Remote / Karachi, PK',
-      type: 'Full-time',
-      description: 'Join our backend team to build scalable APIs and microservices using Node.js and related technologies.',
-      requirements: ['3+ years Node.js experience', 'Experience with Express/Fastify', 'Database design (SQL/NoSQL)', 'REST API development']
+      title: "Node.js Developer",
+      department: "Engineering",
+      location: "Remote / Karachi, Pakistan",
+      type: "Full-Time",
+      description:
+        "Develop scalable APIs and backend systems using Node.js, Express, and MySQL.",
+      requirements: [
+        "Node.js Experience",
+        "REST APIs",
+        "MySQL Database",
+        "Backend Architecture",
+      ],
     },
     {
-      title: 'AI Developer',
-      department: 'AI/ML',
-      location: 'Remote / Islamabad, PK',
-      type: 'Full-time',
-      description: 'Work on cutting-edge AI projects involving LLMs, machine learning models, and intelligent automation systems.',
-      requirements: ['Python/R experience', 'TensorFlow/PyTorch knowledge', 'LLM integration experience', 'Cloud ML services (AWS/Azure)']
+      title: "AI Developer",
+      department: "Artificial Intelligence",
+      location: "Remote / Islamabad, Pakistan",
+      type: "Full-Time",
+      description:
+        "Work on AI-powered solutions, automation systems, and large language model integrations.",
+      requirements: [
+        "Python Programming",
+        "Machine Learning",
+        "LLM Integration",
+        "Problem Solving Skills",
+      ],
     },
     {
-      title: 'Technical Trainer',
-      department: 'Education',
-      location: 'Remote / Multiple Locations',
-      type: 'Contract',
-      description: 'Deliver training programs in web development, AI, and software engineering to our students and clients.',
-      requirements: ['Teaching/training experience', 'Strong technical background', 'Excellent communication skills', 'Industry certifications preferred']
-    }
+      title: "Technical Trainer",
+      department: "Training & Education",
+      location: "Remote",
+      type: "Contract",
+      description:
+        "Train students and professionals in software development and emerging technologies.",
+      requirements: [
+        "Teaching Experience",
+        "Technical Expertise",
+        "Communication Skills",
+        "Presentation Skills",
+      ],
+    },
   ];
 
   const internships = [
     {
-      title: 'Web Development Intern',
-      duration: '3-6 months',
-      description: 'Learn and work on real projects with our development team.',
-      perks: ['Mentorship from senior developers', 'Certificate upon completion', 'Potential full-time offer', 'Flexible hours']
+      title: "Web Development Intern",
+      duration: "3 - 6 Months",
+      description:
+        "Learn real-world web development by working with our senior developers.",
+      perks: [
+        "Professional Mentorship",
+        "Certificate",
+        "Live Projects",
+        "Career Growth",
+      ],
     },
     {
-      title: 'AI Research Intern',
-      duration: '4-6 months',
-      description: 'Assist our AI team in research and implementation of machine learning models.',
-      perks: ['Hands-on AI project experience', 'Publication opportunities', 'Networking with industry experts', 'Stipend provided']
-    }
+      title: "AI Research Intern",
+      duration: "4 - 6 Months",
+      description:
+        "Gain hands-on experience in AI, machine learning, and intelligent systems.",
+      perks: [
+        "AI Project Experience",
+        "Research Opportunities",
+        "Industry Exposure",
+        "Performance-Based Stipend",
+      ],
+    },
   ];
 
   return (
-    <div className="careers-page py-12">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4 text-primary-colour">Join Our Team</h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            We're always looking for talented individuals who share our passion for technology and innovation.
+    <div className="bg-slate-50 min-h-screen">
+
+      {/* Hero Section */}
+      <section className="bg-slate-900 text-white py-24">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Careers At MTech Solutions
+          </h1>
+
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10">
+            Join a growing technology company building innovative software,
+            AI solutions, business systems, and digital transformation
+            projects for clients worldwide.
           </p>
+
+          <Link
+            to="/contact"
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 rounded-lg font-semibold transition"
+          >
+            Apply Today
+          </Link>
+
+        </div>
+      </section>
+
+      {/* Why Join Us */}
+      <section className="py-20 bg-white">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Why Join MTech Solutions?
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-8">
+
+            <div className="bg-slate-50 p-6 rounded-xl shadow">
+              <h3 className="font-bold text-xl mb-3">Innovation</h3>
+              <p className="text-slate-600">
+                Work on modern software and AI technologies.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-xl shadow">
+              <h3 className="font-bold text-xl mb-3">Growth</h3>
+              <p className="text-slate-600">
+                Continuous learning and career advancement.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-xl shadow">
+              <h3 className="font-bold text-xl mb-3">Flexibility</h3>
+              <p className="text-slate-600">
+                Remote and hybrid opportunities available.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-xl shadow">
+              <h3 className="font-bold text-xl mb-3">Impact</h3>
+              <p className="text-slate-600">
+                Build solutions that help businesses grow.
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Internship Programs */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center text-secondary-colour">Internship Programs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {internships.map((program, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-semibold text-primary-colour">{program.title}</h3>
-                  <span className="bg-accent-colour text-white px-3 py-1 rounded-full text-sm">{program.duration}</span>
-                </div>
-                <p className="text-slate-600 mb-4">{program.description}</p>
-                <div className="space-y-2">
-                  <span className="text-sm font-medium text-secondary-colour">Program Perks:</span>
-                  <ul className="list-disc list-inside text-slate-500">
-                    {program.perks.map((perk, i) => (
-                      <li key={i}>{perk}</li>
-                    ))}
-                  </ul>
-                </div>
-                <button className="mt-6 w-full bg-primary-colour text-white py-3 rounded-lg hover:bg-emerald-colour transition-colors font-medium">
-                  Apply Now
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
+      </section>
 
-        {/* Open Positions */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8 text-center text-secondary-colour">Open Positions</h2>
-          <div className="space-y-6">
+      {/* Benefits */}
+      <section className="py-20 bg-slate-100">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Employee Benefits
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Remote Work Opportunities
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Flexible Working Hours
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Professional Development
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Certifications Support
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Mentorship Programs
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              Career Advancement
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Internship Programs */}
+      <section className="py-20">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Internship Programs
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            {internships.map((program, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition"
+              >
+                <div className="flex justify-between items-center mb-4">
+
+                  <h3 className="text-2xl font-bold">
+                    {program.title}
+                  </h3>
+
+                  <span className="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm">
+                    {program.duration}
+                  </span>
+
+                </div>
+
+                <p className="text-slate-600 mb-4">
+                  {program.description}
+                </p>
+
+                <ul className="space-y-2 text-slate-600 mb-6">
+                  {program.perks.map((perk, i) => (
+                    <li key={i}>✓ {perk}</li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/contact"
+                  className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+                >
+                  Apply Now
+                </Link>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Open Positions */}
+      <section className="bg-white py-20">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Open Positions
+          </h2>
+
+          <div className="space-y-8">
+
             {openPositions.map((position, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-primary-colour mb-2">{position.title}</h3>
+              <div
+                key={index}
+                className="bg-slate-50 p-8 rounded-xl shadow"
+              >
+                <div className="flex flex-col lg:flex-row justify-between gap-8">
+
+                  <div>
+
+                    <h3 className="text-2xl font-bold mb-3">
+                      {position.title}
+                    </h3>
+
                     <div className="flex flex-wrap gap-3 mb-4">
-                      <span className="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-sm">{position.department}</span>
-                      <span className="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-sm">{position.location}</span>
-                      <span className="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-sm">{position.type}</span>
+
+                      <span className="bg-white px-3 py-1 rounded-full text-sm">
+                        {position.department}
+                      </span>
+
+                      <span className="bg-white px-3 py-1 rounded-full text-sm">
+                        {position.location}
+                      </span>
+
+                      <span className="bg-white px-3 py-1 rounded-full text-sm">
+                        {position.type}
+                      </span>
+
                     </div>
-                    <p className="text-slate-600 mb-4">{position.description}</p>
-                    <div className="mb-4">
-                      <span className="text-sm font-medium text-secondary-colour">Requirements:</span>
-                      <ul className="list-disc list-inside text-slate-500 mt-2">
-                        {position.requirements.map((req, i) => (
-                          <li key={i}>{req}</li>
-                        ))}
-                      </ul>
-                    </div>
+
+                    <p className="text-slate-600 mb-4">
+                      {position.description}
+                    </p>
+
+                    <ul className="space-y-2 text-slate-600">
+                      {position.requirements.map((req, i) => (
+                        <li key={i}>✓ {req}</li>
+                      ))}
+                    </ul>
+
                   </div>
-                  <button className="bg-secondary-colour text-white px-6 py-3 rounded-lg hover:bg-cyan-600 transition-colors font-medium whitespace-nowrap">
-                    Apply
-                  </button>
+
+                  <div className="flex-shrink-0">
+                    <Link
+                      to="/contact"
+                      className="inline-block bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 rounded-lg font-semibold transition"
+                    >
+                      Apply Now
+                    </Link>
+                  </div>
+
                 </div>
               </div>
             ))}
+
           </div>
-        </section>
-      </div>
+
+        </div>
+
+      </section>
+
+      {/* Hiring Process */}
+      <section className="py-20 bg-slate-100">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Our Hiring Process
+          </h2>
+
+          <div className="grid md:grid-cols-5 gap-6 text-center">
+
+            <div className="bg-white p-6 rounded-xl shadow">Apply</div>
+            <div className="bg-white p-6 rounded-xl shadow">Review</div>
+            <div className="bg-white p-6 rounded-xl shadow">Interview</div>
+            <div className="bg-white p-6 rounded-xl shadow">Evaluation</div>
+            <div className="bg-white p-6 rounded-xl shadow">Offer</div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+      <section className="bg-slate-900 text-white py-20">
+
+        <div className="max-w-4xl mx-auto px-6 text-center">
+
+          <h2 className="text-4xl font-bold mb-6">
+            Ready To Join Our Team?
+          </h2>
+
+          <p className="text-slate-300 mb-8">
+            Send your resume and become part of our growing technology company.
+          </p>
+
+          <a
+            href="mailto:careers@mtechsolutions.pk"
+            className="bg-cyan-500 hover:bg-cyan-600 px-8 py-4 rounded-lg font-semibold transition"
+          >
+            Send Resume
+          </a>
+
+        </div>
+
+      </section>
+
     </div>
   );
 };
